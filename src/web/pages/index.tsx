@@ -132,7 +132,7 @@ export default function Index() {
         ctx.font = 'bold 40px monospace'; ctx.fillText('🏹 TOWER DEFENSE', W / 2, H / 2 - 40);
         ctx.shadowBlur = 8;
         ctx.fillStyle = '#fff'; ctx.font = '18px monospace'; ctx.fillText('Click to place towers · Defend your base!', W / 2, H / 2 + 10);
-        ctx.font = '14px monospace'; ctx.fillText('Press START to begin', W / 2, H / 2 + 50);
+        ctx.font = '14px monospace'; ctx.fillText('STARTで開始', W / 2, H / 2 + 50);
         ctx.shadowBlur = 0; ctx.textAlign = 'left'; return;
       }
 
@@ -141,7 +141,7 @@ export default function Index() {
         ctx.textAlign = 'center';
         ctx.fillStyle = screenRef.current === 'win' ? '#4caf50' : '#f44336';
         ctx.shadowColor = ctx.fillStyle; ctx.shadowBlur = 18;
-        ctx.font = 'bold 38px monospace'; ctx.fillText(screenRef.current === 'win' ? '🏆 VICTORY!' : '💀 GAME OVER', W / 2, H / 2 - 30);
+        ctx.font = 'bold 38px monospace'; ctx.fillText(screenRef.current === 'win' ? '🏆 VICTORY!' : '💀 ゲームオーバー', W / 2, H / 2 - 30);
         ctx.fillStyle = '#fff'; ctx.font = '18px monospace';
         ctx.fillText(`Wave ${waveRef.current} · Gold ${goldRef.current}`, W / 2, H / 2 + 10);
         ctx.shadowBlur = 0; ctx.textAlign = 'left'; return;
@@ -274,10 +274,10 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a0a1e] to-[#1a1a2e] flex flex-col items-center justify-center p-4">
-      <h1 className="text-3xl md:text-4xl font-black mb-3 bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">🏹 Tower Defense</h1>
+      <h1 className="text-3xl md:text-4xl font-black mb-3 bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">🏹 タワーディフェンス</h1>
       <canvas ref={canvasRef} className="rounded-xl border-2 border-orange-800" style={{ maxWidth: '100%' }} />
       <div className="flex flex-wrap gap-2 mt-3 justify-center">
-        {screen === 'menu' && <button onClick={startGame} className="px-6 py-2 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-xl font-bold hover:scale-105">Start</button>}
+        {screen === 'menu' && <button onClick={startGame} className="px-6 py-2 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-xl font-bold hover:scale-105">スタート</button>}
         {screen === 'play' && (
           <>
             {(Object.keys(TOWER_DEFS) as TowerType[]).map(t => {
@@ -291,7 +291,7 @@ export default function Index() {
             <button onClick={startWave} className="px-4 py-1 bg-red-700 text-white rounded-lg text-xs font-bold hover:bg-red-600">▶ Send Wave</button>
           </>
         )}
-        {(screen === 'over' || screen === 'win') && <button onClick={startGame} className="px-6 py-2 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-xl font-bold hover:scale-105">Restart</button>}
+        {(screen === 'over' || screen === 'win') && <button onClick={startGame} className="px-6 py-2 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-xl font-bold hover:scale-105">リスタート</button>}
       </div>
       <p className="text-gray-500 text-xs mt-2">Click grid to place towers · Click tower to upgrade · Enemies follow the path</p>
     </div>
